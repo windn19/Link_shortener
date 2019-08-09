@@ -7,6 +7,11 @@ import argparse
 
 
 def is_bitly(link):
+    """
+     Check: is the link a long address or a short link Byt.ly
+     : param link: link to check
+     : return: True - short link Byt.ly, False - long address
+    """
     url = f'https://api-ssl.bitly.com/v4/expand'
     options = {'bitlink_id': link}
     res = post(url=url, headers=head, json=options)
@@ -15,6 +20,11 @@ def is_bitly(link):
 
 
 def short_links(link):
+    """
+    Shortening a long url to a short link Byt.ly
+     : param link: long address
+     : return: string - short link Byt.ly
+    """
     url = 'https://api-ssl.bitly.com/v4/groups'
     res = get(url=url, headers=head)
     group = res.json()['groups'][0]['guid']
@@ -32,6 +42,11 @@ def short_links(link):
 
 
 def get_total_click(link):
+    """
+     Requests the total number of clicks at the moment
+     : param link: Byt.ly link for verification
+     : return: number of clicks
+    """
     params = {
         'unit': 'day',
         'units': '-1'
@@ -44,6 +59,11 @@ def get_total_click(link):
 
 
 def click_for_day(link):
+    """
+    Requests conversion statistics by day, otherwise HTTPError
+     : param link: Byt.ly link for verification
+     : return: dictionary of the form: {date in datetime format: number of clicks}
+    """
     params = {
         'unit': 'day',
         'units': '-1'
