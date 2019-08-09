@@ -1,12 +1,13 @@
 # Link shortener
 The resulting link is shortened through the website Byt.ly. When you receive an already short link, it gives statistics by day (number of clicks)
-###About Installation
+
+### About Installation
 The program is written in python3 and it is believed that it is already installed.
 Then use pip (pip3 if there is a conflict with python2):
 ```
 pip install -r requirements.txt
 ```
-###Using:
+### Using:
 The program is a console application. The command to run has the format:
 ```
 python3 main.py [-h] [-l {CRITICAL,ERROR,WARNING,INFO,DEBUG,NOTSET}] link
