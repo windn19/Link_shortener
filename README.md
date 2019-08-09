@@ -8,7 +8,7 @@ Then use pip (pip3 if there is a conflict with python2):
 pip install -r requirements.txt
 ```
 ### Using:
-The program is a console application. The command to run has the format:
+The program is a console application. The root directory must contain a ".env" file containing information about the token Byt.ly. The command to run has the format:
 ```
 python3 main.py [-h] [-l {CRITICAL,ERROR,WARNING,INFO,DEBUG,NOTSET}] link
 
