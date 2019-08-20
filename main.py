@@ -52,7 +52,7 @@ def get_total_click(link):
         'units': '-1'
     }
     url = f'https://api-ssl.bitly.com/v4/bitlinks/{link}/clicks/summary'
-    res = get(url=url, headers={'Authorization': f'Bearer {BITLY_TOKEN}'}, params=params)
+    res = get(url=url, headers={'Authorization': f'Bearer {token}'}, params=params)
     logging.info(f'Get_total_click - {res.status_code}')
     res.raise_for_status()
     return res.json()["total_clicks"]
@@ -69,7 +69,7 @@ def click_for_day(link):
         'units': '-1'
     }
     url = f'https://api-ssl.bitly.com/v4/bitlinks/{link}/clicks'
-    res = get(url=url, headers={'Authorization': f'Bearer {BITLY_TOKEN}'}, params=params)
+    res = get(url=url, headers={'Authorization': f'Bearer {token}'}, params=params)
     logging.info(f'Click_for_day - {res.status_code}')
     res.raise_for_status()
     return res.json()['link_clicks']
@@ -77,9 +77,9 @@ def click_for_day(link):
 
 if __name__ == '__main__':
     load_dotenv()
-    BITLY_TOKEN = os.getenv("token")
+    token = os.getenv("BITLY_TOKEN")
     head = {
-        'Authorization': f'Bearer {BITLY_TOKEN}',
+        'Authorization': f'Bearer {token}',
         'Accept': 'application/json'
     }
     parse = argparse.ArgumentParser()
